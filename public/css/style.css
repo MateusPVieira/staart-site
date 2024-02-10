@@ -162,7 +162,7 @@ header .navbar-nav button{
   margin-bottom: 5rem;
 }
 
-/* Cases */
+/* ############ Cases ############ */
 #cases{
   display: flex;
   flex-direction: column;
@@ -188,11 +188,15 @@ header .navbar-nav button{
   font-size: 1rem;
 }
 
+/* Cards */
+
 #cases .card {
     position: relative;
-    width: 25rem;
+    width: 20rem;
     height: 30rem;
-    margin: 1rem; 
+    min-width: 20rem;
+    min-height: 30rem;
+    margin: 2rem 1rem; 
     border-radius: 1rem;
     background-color: var(--transparent);
     background-repeat: no-repeat;
@@ -201,20 +205,74 @@ header .navbar-nav button{
 }
 
 #cases .card .card-b{
+    border-radius: 1rem;
+    bottom: 0%;
     background-color: #1c20313f;
     color: var(--blue);
     width: 100%;
     margin: 0;
-    height: 10rem;
-    top: -5%;
+    height: 55%;
     backdrop-filter: blur(10px);
 }
 
-#cases .card-icon{
-  top: 46%;
-  left: 70%;
+#cases .card .title{
+  color: var(--white);
+  font-size: 1.2rem;
 }
-/* Feedback*/
+
+#cases .card .card-b > img{
+  width: 110%;
+  align-self: center;
+}
+
+#cases .card .card-text{
+  font-size: 0.8rem;
+  max-height: 7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#cases .card .card-text p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+
+#cases .card-button{
+  top: 90%;
+  max-width: 100%;
+  border-radius: 0rem 1.3rem 0rem 1.3rem;
+  height: 3.2rem;
+  background: 
+  linear-gradient(#1c2031, #1c2031) padding-box,
+  linear-gradient(10deg, #1c2031, var(--transparent)) border-box;
+  border: 3px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+}
+
+#cases .card-button a{
+  max-width: 100%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--white) 30%, var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+#cases .card-button img:last-child{
+  width: 1.7rem;
+}
+
+
+#cases .card-icon{
+  top: 31%;
+  left: 65%;
+}
+
+
+/* ############ Feedback ############ */
   
   #container {
     height: 100vh;
