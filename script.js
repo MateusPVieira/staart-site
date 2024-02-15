@@ -26,13 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
 let slideIndex = 1;
 
 function showSlide(n) {
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
+    const slides = document.querySelectorAll("#feedbacks .slide");
+    const dots = document.querySelectorAll("#feedbacks .dot");
 
     if (n > slides.length) {
         slideIndex = 1;
@@ -66,7 +64,7 @@ function showSlide(n) {
 }
 
 function updateNextSlide() {
-    const slides = document.querySelectorAll(".slide");
+    const slides = document.querySelectorAll("#feedbacks .slide");
     const nextIndex = (slideIndex % slides.length);
     const nextSlide = slides[nextIndex];
 
@@ -89,8 +87,8 @@ function currentSlide(n) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const slides = document.querySelectorAll(".slide");
-    const sliderDots = document.querySelector(".slider-dots");
+    const slides = document.querySelectorAll("#feedbacks .slide");
+    const sliderDots = document.querySelector("#feedbacks .slider-dots");
 
     // Cria os dots e adiciona os listeners
     slides.forEach((slide, index) => {

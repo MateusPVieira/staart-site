@@ -1,209 +1,219 @@
-@charset "UTF-8";
 :root {
-  --purple: #ad67fa;
-  --blue: #81AFDD;
-  --medium-blue: #176cc8;
-  --white: #fdfcff;
-  --dark-blue: #052D56;
-  --darker-blue: #031b34;
-  --black: #1c2031;
-  --transparent: #eeeeee15;
-}
+    --purple: #ad67fa;
+    --blue: #81AFDD;
+    --medium-blue: #176cc8;
+    --white: #fdfcff;
+    --dark-blue: #052D56;
+    --darker-blue: #031b34;
+    --black: #1c2031;
+    --transparent: #eeeeee15;
+  }
+
+
 
 /* General */
-main {
-  background-color: #1c2031;
-  padding: 2rem 10rem 1rem 10rem;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
+main{
+    background-color: #1c2031;
+    padding: 2rem 10rem 1rem 10rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
 }
 
-main p {
+main p{
   margin: 0;
   padding: 0;
 }
-
-.stripedText {
-  background: linear-gradient(to right, var(--white) 30%, var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.stripedText{
+    background: linear-gradient(to right, var(--white) 30%, var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .btn-grad {
-  background-image: linear-gradient(to right, var(--white), var(--purple));
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  border-radius: 0.3rem;
-  border: 0;
-  display: block;
-  color: var(--black);
-  font-weight: bold;
-}
-
+    background-image: linear-gradient(to right, var(--white), var(--purple));
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;  
+    border-radius: 0.3rem;
+    border: 0;
+    display: block;
+    color: var(--black); 
+    font-weight: bold; 
+  }
+ 
 .btn-grad:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }
 
 /* Navbar */
-header .navbar {
+header .navbar{
   margin-bottom: 4rem;
 }
 
-header .navbar-nav li a {
+header .navbar-nav li a{
   color: var(--white);
   text-decoration: none;
   font-weight: 500;
   font-size: 1.2rem;
 }
 
-header .navbar-nav button {
+header .navbar-nav button{
   font-size: 1.2rem;
   padding: 0.7rem 1.5rem;
 }
 
+
 /*Home*/
-.home {
+.home{
   color: var(--white);
   padding-bottom: 5rem;
 }
-
-.home .keywords {
+.home .keywords{
   font-weight: bold;
   font-size: 1.4rem;
 }
-
-.home .title {
-  font-size: 4rem;
-  font-weight: bolder;
-  background-image: linear-gradient(to left, var(--white) 30%, var(--purple));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: black;
+.home .title{
+    font-size: 4rem;
+    font-weight: bolder;
+    background-image: linear-gradient(to left, var(--white) 30%, var(--purple));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: black;
 }
 
-#btn-register {
+#btn-register{
   padding: 1rem 1.5rem;
 }
 
-.home p {
+.home p{
   font-size: 1.4rem;
   font-weight: 200;
   text-rendering: optimizeLegibility;
 }
 
-.home .text {
+.home .text{
   width: 45%;
 }
 
-.home .subtext {
+.home .subtext{
   color: var(--blue);
   margin-right: 12rem;
 }
 
-.home .image {
+.home .image{
   width: 50%;
   padding: 0rem 10rem 0rem 10rem;
 }
 
-.home .register {
+.home .register{
   height: 3.5rem;
 }
 
-.home .register input {
+.home .register input{  
   background: var(--dark-blue);
   border-radius: 0.3rem 0 0 0.3rem;
   border: none;
   font-size: 1rem;
   color: var(--blue);
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   text-align: center;
-}
-.home .register input :focus {
-  outline: none;
-  box-shadow: none;
-  border-color: rgb(100, 153, 255);
+  :focus{
+      outline: none;
+      box-shadow: none;
+      border-color: rgb(100, 153, 255);
+  }
 }
 
-.home .total-registers p {
+.home .total-registers p{
   font-size: 1rem;
 }
 
 /* Clients*/
-#clients {
+
+#clients{
   margin: 3rem auto 3rem auto;
 }
 
-#clients img {
+#clients img{
   width: 10rem;
   opacity: 70%;
 }
 
+$animationSpeed: 40s;
+
+// Animation
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50rem);
-  }
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-10rem *5))}
 }
+
+@mixin white-gradient {
+	background: linear-gradient(to right,  var(--black) 0%,rgba(255,255,255,0) 100%);
+}
+
+$animationSpeed: 40s;
+
+// Animation
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-1750px);
-  }
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
 }
+
+
+// Styling
 .slider2 {
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-  width: 70rem;
+	margin: auto;
+	overflow:hidden;
+	position: relative;
+	width: 70rem;
   display: flex;
-}
-.slider2::before, .slider2::after {
-  background: linear-gradient(to right, var(--black) 0%, rgba(255, 255, 255, 0) 100%);
-  content: "";
-  height: 100px;
-  position: absolute;
-  width: 200px;
-  z-index: 2;
-}
-.slider2::after {
-  right: 0;
-  top: 0;
-  transform: rotateZ(180deg);
-}
-.slider2::before {
-  left: 0;
-  top: 0;
-}
-.slider2 .slide-track2 {
-  animation: scroll 40s linear infinite;
-  display: flex;
-  width: 3500px;
-  align-items: center;
-}
-.slider2 .slide2 {
-  height: 5rem;
-  width: 15rem;
-  margin: auto;
-  display: flex;
+
+	&::before,
+	&::after {
+		@include white-gradient;
+		content: "";
+		height: 100px;
+		position: absolute;
+		width: 200px;
+		z-index: 2;
+	}
+	
+	&::after {
+		right: 0;
+		top: 0;
+		transform: rotateZ(180deg);
+	}
+
+	&::before {
+		left: 0;
+		top: 0;
+	}
+	
+	.slide-track2 {
+		animation: scroll $animationSpeed linear infinite;
+		display: flex;
+		width: calc(250px * 14);
+    align-items: center;
+	}
+	
+	.slide2 {
+		height: 5rem;
+		width: 15rem;
+    margin: auto;
+    display: flex;
+	}
 }
 
 /* About */
-.about {
-  background: linear-gradient(-45deg, var(--medium-blue) 0%, var(--dark-blue) 20%, var(--dark-blue) 90%, var(--medium-blue) 100%);
-  color: var(--white);
-  padding: 6rem 5rem 2rem 5rem;
-  margin-bottom: 6rem;
+.about{
+    background: linear-gradient(-45deg, var(--medium-blue) 0%, var(--dark-blue) 20%, var(--dark-blue) 90%, var(--medium-blue) 100%);
+    color: var(--white);
+    padding: 6rem 5rem 2rem 5rem;
+    margin-bottom: 6rem;
 }
 
 .about .about-title > div {
@@ -215,17 +225,17 @@ header .navbar-nav button {
   color: var(--blue);
 }
 
-.about .about-title .moto {
-  font-size: 2.5rem;
-  font-weight: bold;
+.about .about-title .moto{
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
-.about .keywords img {
+.about .keywords img{
   width: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.about .keywords span {
+.about .keywords span{
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -235,152 +245,162 @@ header .navbar-nav button {
 }
 
 /* ############ Cases ############ */
-#cases {
+#cases{
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-#cases .cases-text .title {
+#cases .cases-text .title{
   font-size: 2rem;
   font-weight: bold;
   padding-right: 4rem;
 }
 
-#cases .cases-text span {
+#cases .cases-text span{
   display: block;
   color: var(--white);
   font-weight: 600;
   font-size: 1rem;
 }
 
-#cases .cases-text .subtext {
+#cases .cases-text .subtext{
   color: var(--blue);
   font-weight: 400;
   font-size: 1rem;
 }
 
 /* Cards */
+
 #cases .card {
-  position: relative;
-  height: 30rem;
-  min-width: 20rem;
-  min-height: 30rem;
-  margin: 2rem 1rem;
-  border-radius: 1rem;
-  background-color: var(--transparent);
-  background-repeat: no-repeat;
-  background-size: contain;
-  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 30rem;
+    min-width: 20rem;
+    min-height: 30rem;
+    margin: 2rem 1rem; 
+    border-radius: 1rem;
+    background-color: var(--transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: 0 30px 40px rgba(0,0,0,.1);
 }
 
-#cases .card .card-b {
-  border-radius: 1rem;
-  bottom: 0%;
-  background-color: rgba(28, 32, 49, 0.2470588235);
-  color: var(--blue);
-  width: 100%;
-  margin: 0;
-  height: 55%;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+#cases .card .card-b{
+    border-radius: 1rem;
+    bottom: 0%;
+    background-color: #1c20313f;
+    color: var(--blue);
+    width: 100%;
+    margin: 0;
+    height: 55%;
+    backdrop-filter: blur(10px);
 }
 
-#cases .card .title {
+#cases .card .title{
   color: var(--white);
   font-size: 1.2rem;
 }
 
-#cases .card .card-b > img {
+#cases .card .card-b > img{
   width: 110%;
   align-self: center;
 }
 
-#cases .card .card-text {
+#cases .card .card-text{
   font-size: 0.8rem;
   max-height: 7rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-#cases .card .card-text p {
+#cases .card .card-text p{
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0;
 }
 
-#cases .card-button {
+#cases .card-button{
   top: 90%;
   max-width: 100%;
   border-radius: 0rem 1.3rem 0rem 1.3rem;
   height: 3.2rem;
-  background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(10deg, #1c2031, var(--transparent)) border-box;
+  background: 
+  linear-gradient(#1c2031, #1c2031) padding-box,
+  linear-gradient(10deg, #1c2031, var(--transparent)) border-box;
   border: 3px solid transparent;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
 }
 
-#cases .card-button a {
+#cases .card-button a{
   max-width: 100%;
   font-size: 0.8rem;
   font-weight: 700;
   background: linear-gradient(to right, var(--white) 30%, var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  
 }
 
-#cases .card-button img:last-child {
+#cases .card-button img:last-child{
   width: 1.7rem;
 }
 
-#cases .card-icon {
+
+#cases .card-icon{
   top: 31%;
   left: 65%;
 }
 
+
 /* ############# Services ############### */
-#services {
+#services{
   margin-top: 5rem;
 }
 
-#services .text {
+#services .text{
   margin: 17rem 10rem 0rem 2rem;
-  width: 35%;
+ width: 35%;
 }
 
-#services .title-box {
+#services .title-box{
   margin: 5rem auto;
   justify-content: center;
 }
 
-#services .services-mini-text {
+
+#services .services-mini-text{
   color: #71E5FF;
   font-size: 1rem;
 }
 
-#services .title {
+
+#services .title{
   font-weight: 700;
   font-size: 3.5rem;
   line-height: 3.5rem;
   margin-bottom: 1rem;
 }
 
-#services .text p:last-child {
+#services .text p:last-child{
   color: var(--blue);
   width: 65%;
 }
 
+
 /* Items */
-#services .items {
+
+#services .items{
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#services .items .item {
+#services .items .item{
   width: 21rem;
   margin: 3rem 6rem 3rem 0rem;
 }
 
-#services .items .item-title {
+#services .items .item-title{
   font-weight: 500;
   font-size: 2rem;
   color: var(--white);
@@ -388,33 +408,35 @@ header .navbar-nav button {
   margin: 0.3rem 0;
 }
 
-#services .items .item-text {
+#services .items .item-text{
   font-weight: 100;
   color: var(--blue);
 }
-
 /* ############ Feedback ############ */
-#feedbacks .title-box {
+
+
+#feedbacks .title-box{
   width: 35%;
   align-self: center;
   margin-bottom: 2.5rem;
 }
 
-#feedbacks .title-box .title {
+#feedbacks .title-box .title{
   font-weight: 700;
   font-size: 2rem;
   align-self: center;
   margin-bottom: 1rem;
 }
 
-#feedbacks .title-box .subtitle {
+#feedbacks .title-box .subtitle{
   color: var(--blue);
   align-self: center;
   text-align: center;
 }
 
 /* Carrousel */
-#feedbacks .card {
+
+#feedbacks .card{
   z-index: 2;
   border-radius: 0.5rem;
   background-color: var(--dark-blue);
@@ -424,7 +446,7 @@ header .navbar-nav button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-#feedbacks .card-text {
+#feedbacks .card-text{
   color: var(--white);
   font-weight: bold;
   text-align: center;
@@ -438,7 +460,7 @@ header .navbar-nav button {
   height: 110%;
   width: 150%; /* Garante que o filtro ocupe toda a largura do carrossel */
   z-index: 3; /* Coloca a div de filtro acima dos cards */
-  background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 24%, rgba(11, 4, 24, 0) 45%, rgba(26, 3, 56, 0) 53%, rgb(0, 0, 0) 78%, rgb(0, 0, 0) 100%);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(11,4,24,0) 45%, rgba(26,3,56,0) 53%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%);
 }
 
 #feedbacks .slider-container {
@@ -453,8 +475,9 @@ header .navbar-nav button {
   justify-content: center; /* Centraliza os slides */
   transition: transform 0.5s ease; /* Adiciona uma transição suave */
   overflow: hidden; /* Para esconder partes dos slides que ultrapassam o contêiner */
-  align-items: center;
+  align-items:center;
 }
+
 
 #feedbacks .slide {
   flex: 0 0 33.33%; /* Cada slide ocupa 1/3 do container */
@@ -468,8 +491,9 @@ header .navbar-nav button {
   opacity: 1; /* Imagem selecionada tem opacidade completa */
   -webkit-mask-image: none;
   transform: scale(1);
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Imagem selecionada volta ao tamanho original */
+  transition: opacity 0.5s ease, transform 0.5s ease;/* Imagem selecionada volta ao tamanho original */
 }
+
 
 #feedbacks .slider-dots {
   text-align: center;
@@ -490,16 +514,16 @@ header .navbar-nav button {
   background-color: #717171;
 }
 
-#feedbacks .header-feedbacks {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#feedbacks .header-feedbacks{
+display: flex;
+flex-direction: column;
+align-items:center;
 }
 
 #feedbacks .header-feedbacks > p {
-  max-width: 500px;
-  text-align: center;
-  font-size: 1.25rem;
+max-width: 500px;
+text-align: center;
+font-size: 1.25rem;
 }
 
 #feedbacks .slide.next-slide {
@@ -535,27 +559,28 @@ header .navbar-nav button {
   margin-top: 10px;
 }
 
+
 /* ########### Banner ######### */
-#banner {
+#banner{
   padding: 2rem 3rem;
-  background: linear-gradient(90deg, rgb(202, 153, 255) 0%, rgb(225, 199, 252) 36%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(90deg, rgb(202, 153, 255) 0%, rgb(225, 199, 252)36%, rgba(255,255,255,1) 100%);
   color: var(--black);
   width: 80rem;
   margin: 5rem auto;
   border-radius: 0.8rem;
 }
 
-#banner p:first-child {
+#banner p:first-child{
   font-size: 0.8rem;
 }
 
-#banner p:last-child {
+#banner p:last-child{
   font-size: 1.3rem;
   font-weight: bold;
   width: 80%;
 }
 
-#banner button {
+#banner button{
   background-color: var(--black);
   color: var(--white);
   font-weight: 600;
@@ -566,12 +591,13 @@ header .navbar-nav button {
   align-self: center;
 }
 
+
 /* ########### FAQ ############*/
-#faq .title {
+#faq .title{
   margin-bottom: 4rem;
 }
 
-#faq p:first-child {
+#faq p:first-child{
   font-weight: bold;
   font-size: 2.5rem;
   align-self: center;
@@ -579,18 +605,18 @@ header .navbar-nav button {
   margin-bottom: -2.5rem;
 }
 
-#faq p:last-child {
+#faq p:last-child{
   font-weight: bold;
   font-size: 6rem;
   align-self: center;
   justify-self: center;
 }
 
-#faq .FAQ-items {
+#faq .FAQ-items{
   margin-bottom: 5rem;
 }
 
-#faq .FAQ-items .FAQ-item {
+#faq .FAQ-items .FAQ-item{
   font-weight: 500;
   font-size: 1.3rem;
   color: var(--white);
@@ -599,20 +625,22 @@ header .navbar-nav button {
   max-width: 20rem;
   min-width: 25rem;
   margin: 0.6rem 0rem;
-  border-radius: 1rem;
+  border-radius:1rem;
   height: 6rem;
-  background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(45deg, rgb(210, 168, 255) 0%, rgb(236, 218, 255) 100%);
+  background: 
+  linear-gradient(#1c2031, #1c2031) padding-box,
+  linear-gradient(45deg, rgb(210, 168, 255) 0%,rgb(236, 218, 255) 100%);
   border: 0.13rem solid transparent;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 /* ######### Community ########*/
-#community .comm-ico {
+#community .comm-ico{
   width: 5rem;
   align-self: center;
 }
 
-#community > div > p.title {
+#community > div > p.title{
   font-size: 4.5rem;
   font-weight: bold;
   width: 50%;
@@ -621,35 +649,35 @@ header .navbar-nav button {
   line-height: 4rem;
 }
 
-#community > div > p:nth-child(3) {
+#community > div > p:nth-child(3){
   font-size: 1rem;
   font-weight: 200;
   width: 25%;
   text-align: center;
   align-self: center;
-  color: var(--white);
+  color: var(--white)
 }
 
-#community .comm-photo {
+#community .comm-photo{
   margin: 3rem 0;
   width: 30rem;
   align-self: center;
 }
 
-#community .buttons {
-  align-self: center;
-  margin-bottom: 4rem;
+#community .buttons{
+align-self: center;
+margin-bottom: 4rem;
 }
 
-#community button {
+#community button{
   border-radius: 3rem;
-  background: linear-gradient(90deg, rgb(202, 153, 255) 0%, rgb(225, 199, 252) 36%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(90deg, rgb(202, 153, 255) 0%, rgb(225, 199, 252)36%, rgba(255,255,255,1) 100%);
   height: 5rem;
   margin: 0.5rem;
   border: none;
 }
 
-#community button a {
+#community button a{
   margin: 3rem;
   font-weight: 700;
   font-size: 1rem;
@@ -657,7 +685,7 @@ header .navbar-nav button {
   color: var(--black);
 }
 
-#community button a img {
+#community button a img{
   margin-right: 1rem;
 }
 
@@ -672,53 +700,58 @@ header .navbar-nav button {
   line-height: 6rem;
 }
 
-#cta > div > button {
+
+#cta > div > button{
   font-weight: 500;
   font-size: 1.2rem;
   align-self: center;
   color: var(--white);
   margin-bottom: 6rem;
-  background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(45deg, rgb(210, 168, 255) 0%, rgb(236, 218, 255) 100%);
+  background: 
+  linear-gradient(#1c2031, #1c2031) padding-box,
+  linear-gradient(45deg, rgb(210, 168, 255) 0%,rgb(236, 218, 255) 100%);
   padding: 1.3rem 5rem;
   border: 0.12rem solid transparent;
+
 }
 
 /* ######## Info ####### */
-#info {
+#info{
   color: var(--white);
   font-size: 1rem;
   margin-bottom: 4rem;
 }
 
-#info > div > div:nth-child(1) > p.adress {
+#info > div > div:nth-child(1) > p.adress{
   margin-bottom: 2rem;
 }
 
-#info div li.head {
+#info div li.head{
   font-weight: 600;
   font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 
-#info div li {
+#info div li{
   text-decoration: none;
   margin-bottom: 1rem;
   list-style-type: none;
 }
 
-#info div li a {
+#info div li a{
   text-decoration: none;
   color: var(--white);
 }
 
-#info div li a:hover {
+#info div li a:hover{
   color: var(--purple);
 }
 
 /* ####### Footer ####### */
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-}/*# sourceMappingURL=style.css.map */
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    color: var(--white);
+}
