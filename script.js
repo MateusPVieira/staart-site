@@ -8,124 +8,175 @@ function truncateText(element, originalText) {
 }
 
 function handleResize() {
-  let elements = document.querySelectorAll("#cases .card .card-text p:last-child");
-  elements.forEach((element, index) => truncateText(element, originalTexts[index]));
+  let elements = document.querySelectorAll(
+    "#cases .card .card-text p:last-child"
+  );
+  elements.forEach((element, index) =>
+    truncateText(element, originalTexts[index])
+  );
 }
 
 // Inicializa o array originalTexts com os textos originais
-document.addEventListener("DOMContentLoaded", function() {
-  let elements = document.querySelectorAll("#cases .card .card-text p:last-child");
-  elements.forEach(element => originalTexts.push(element.innerHTML));
+document.addEventListener("DOMContentLoaded", function () {
+  let elements = document.querySelectorAll(
+    "#cases .card .card-text p:last-child"
+  );
+  elements.forEach((element) => originalTexts.push(element.innerHTML));
   handleResize(); // Chama handleResize uma vez após a inicialização para truncação inicial
 });
 
 // Adiciona um ouvinte de evento para redimensionamento da janela
 window.addEventListener("resize", handleResize);
 
+class Carousel {
+  constructor(el) {
+    this.el = el;
+    this.carouselOptions = ["previous", "next"];
+    this.carouselData = ["Primeiro", "Segundo", "Terceiro", "Quarto", "Quinto"]
+    this.carouselInView = [1, 2, 3, 4, 5];
+    this.carouselContainer;
+    this.carouselPlayState;
+  }
 
-// Carousel
-    
-// function toggleState3() {
-//   let galleryView = document.getElementById("galleryView")
-//   let tilesView = document.getElementById("tilesView")
-//   let outer = document.getElementById("outer3");
-//   let slider = document.getElementById("slider3");
-//   let tilesContainer = document.getElementById("tilesContainer");
-//   if (slider.classList.contains("active")) {
-//     slider.classList.remove("active");
-//     outer.classList.remove("outerActive");
-//     galleryView.style.display = "flex";
-//     tilesView.style.display = "none";
-    
-//     while (tilesContainer.hasChildNodes()) {
-//       tilesContainer.removeChild(tilesContainer.firstChild)
-//       }  
-//   } else {
-//     slider.classList.add("active");
-//     outer.classList.add("outerActive");
-//     galleryView.style.display = "none";
-//     tilesView.style.display = "flex";
-     
-//     for (let i = 0; i < imgObject.length - 1; i++) {
-//       let tileItem = document.createElement("div");
-//       tileItem.classList.add("tileItem");
-//       tileItem.style.background =  "url(" + imgObject[i] + ")";
-//       tileItem.style.backgroundSize = "contain";  
-//       tilesContainer.appendChild(tileItem);      
-//     }
-//   };
-// }
+  mounted() {
+    this.setupCarousel();
+  }
+  setupCarousel() {
+    const controls = document.createElement("div");
+    const container = document.createElement("div");
 
-// let imgObject = [
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",  
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-//   "https://static.todamateria.com.br/upload/fa/st/fastfoodmeals.jpg",
-// ];
+    // Add container for carousel items and controls
+    this.el.append(controls,container);
+    container.className = 'carousel-container';
+    controls.className = "carousel-controls";
 
-// let mainImg = 0;
-// let prevImg = imgObject.length - 1;
-// let nextImg = 1;
+    // Take dataset array and append items to container
+    this.carouselInView.forEach((item, index) => {
+      const carouselItem = document.createElement("div");
+      const carouselItemContent = document.createElement("p");
+      carouselItemContent.textContent = this.carouselData[index];
+      carouselItemContent.className = "card-text";
+      carouselItem.append(carouselItemContent);
+      container.append(carouselItem);
 
-// function loadGallery() {
+      // Add item attributes
+      carouselItem.className = `card card-${index + 1}`;
+      carouselItem.src = item.src;
+      carouselItem.setAttribute("loading", "lazy");
+      // Used to keep track of carousel items, infinite items possible in carousel however min 5 items required
+      carouselItem.setAttribute("data-index", `${index + 1}`);
+    });
 
-//   let mainView = document.getElementById("mainView");
-//   mainView.style.background = "url(" + imgObject[mainImg] + ")";
+    this.carouselOptions.forEach((option) => {
+      const btn = document.createElement('button');
+      const axSpan = document.createElement('span');
 
-//   let leftView = document.getElementById("leftView");
-//   leftView.style.background = "url(" + imgObject[prevImg] + ")";
-  
-//   let rightView = document.getElementById("rightView");
-//   rightView.style.background = "url(" + imgObject[nextImg] + ")";
-  
-//   let linkTag = document.getElementById("linkTag")
-//   linkTag.href = imgObject[mainImg];
+      // Add accessibilty spans to button
+      axSpan.innerText = option;
+      axSpan.className = 'ax-hidden';
+      btn.append(axSpan);
 
-// };
+      // Add button attributes
+      btn.className = `carousel-control carousel-control-${option}+2`;
+      btn.setAttribute('data-name', option);
 
-// function scrollRight() {
-  
-//   prevImg = mainImg;
-//   mainImg = nextImg;
-//   if (nextImg >= (imgObject.length -1)) {
-//     nextImg = 0;
-//   } else {
-//     nextImg++;
-//   }; 
-//   loadGallery();
-// };
+      // Add carousel control options
+      controls.append(btn);
+    });
 
-// function scrollLeft() {
-//   nextImg = mainImg
-//   mainImg = prevImg;
-   
-//   if (prevImg === 0) {
-//     prevImg = imgObject.length - 1;
-//   } else {
-//     prevImg--;
-//   };
-//   loadGallery();
-// };
+    // After rendering carousel to our DOM, setup carousel controls' event listeners
+    this.setControls([...controls.children]);
 
-// document.getElementById("navRight").addEventListener("click", scrollRight);
-// document.getElementById("navLeft").addEventListener("click", scrollLeft);
-// document.getElementById("rightView").addEventListener("click", scrollRight);
-// document.getElementById("leftView").addEventListener("click", scrollLeft);
-// document.addEventListener('keyup',function(e){
-//     if (e.keyCode === 37) {
-//     scrollLeft();
-//   } else if(e.keyCode === 39) {
-//     scrollRight();
-//   }
-// });
+    // Set container property
+    this.carouselContainer = container;
+  }
 
-// loadGallery();
+  setControls(controls) {
+    controls.forEach(control => {
+      control.onclick = (event) => {
+        event.preventDefault();
+
+        // Manage control actions, update our carousel data first then with a callback update our DOM
+        this.controlManager(control.dataset.name);
+      };
+    });
+  }
+
+  controlManager(control) {
+    if (control === 'previous') return this.previous();
+    if (control === 'next') return this.next();
+    if (control === 'play') return this.play();
+
+    return;
+  }
+
+  previous() {
+    // Update order of items in data array to be shown in carousel
+    this.carouselData.unshift(this.carouselData.pop());
+
+    // Push the first item to the end of the array so that the previous item is front and center
+    this.carouselInView.push(this.carouselInView.shift());
+
+    // Update the css class for each carousel item in view
+    this.carouselInView.forEach((item, index) => {
+      this.carouselContainer.children[index].className = `card-${item}`;
+    });
+
+    // Using the first 5 items in data array update content of carousel items in view
+    this.carouselData.slice(0, 5).forEach((data, index) => {
+      document.querySelector(`.card-${index + 1}`).innerText = data;
+    });
+  }
+
+  next() {
+    // Update order of items in data array to be shown in carousel
+    this.carouselData.push(this.carouselData.shift());
+
+    // Take the last item and add it to the beginning of the array so that the next item is front and center
+    this.carouselInView.unshift(this.carouselInView.pop());
+
+    // Update the css class for each carousel item in view
+    this.carouselInView.forEach((item, index) => {
+      this.carouselContainer.children[index].className = `card card-${item}`;
+    });
+
+    // Using the first 5 items in data array update content of carousel items in view
+    this.carouselData.slice(0, 5).forEach((data, index) => {
+      console.log( document.querySelector(`.card-${index + 1}`))
+      document.querySelector(`.card-${index + 1} p`).innerText = data;
+    });
+  }
+
+  play() {
+    const playBtn = document.querySelector('.carousel-control-play');
+    const startPlaying = () => this.next();
+
+    if (playBtn.classList.contains('playing')) {
+      // Remove class to return to play button state/appearance
+      playBtn.classList.remove('playing');
+
+      // Remove setInterval
+      clearInterval(this.carouselPlayState); 
+      this.carouselPlayState = null; 
+    } else {
+      // Add class to change to pause button state/appearance
+      playBtn.classList.add('playing');
+
+      // First run initial next method
+      this.next();
+
+      // Use play state prop to store interval ID and run next method on a 1.5 second interval
+      this.carouselPlayState = setInterval(startPlaying, 1500);
+    };
+  }
+
+}
 
 
 
+// Refers to the carousel root element you want to target, use specific class selectors if using multiple carousels
+const el = document.querySelector(".carrousel");
+// Create a new carousel object
+const exampleCarousel = new Carousel(el);
+// Setup carousel and methods
+exampleCarousel.mounted();
