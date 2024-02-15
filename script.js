@@ -25,158 +25,87 @@ document.addEventListener("DOMContentLoaded", function () {
   handleResize(); // Chama handleResize uma vez após a inicialização para truncação inicial
 });
 
-// Adiciona um ouvinte de evento para redimensionamento da janela
-window.addEventListener("resize", handleResize);
 
-class Carousel {
-  constructor(el) {
-    this.el = el;
-    this.carouselOptions = ["previous", "next"];
-    this.carouselData = ["Primeiro", "Segundo", "Terceiro", "Quarto", "Quinto"]
-    this.carouselInView = [1, 2, 3, 4, 5];
-    this.carouselContainer;
-    this.carouselPlayState;
-  }
 
-  mounted() {
-    this.setupCarousel();
-  }
-  setupCarousel() {
-    const controls = document.createElement("div");
-    const container = document.createElement("div");
 
-    // Add container for carousel items and controls
-    this.el.append(controls,container);
-    container.className = 'carousel-container';
-    controls.className = "carousel-controls";
+let slideIndex = 1;
 
-    // Take dataset array and append items to container
-    this.carouselInView.forEach((item, index) => {
-      const carouselItem = document.createElement("div");
-      const carouselItemContent = document.createElement("p");
-      carouselItemContent.textContent = this.carouselData[index];
-      carouselItemContent.className = "card-text";
-      carouselItem.append(carouselItemContent);
-      container.append(carouselItem);
+function showSlide(n) {
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
 
-      // Add item attributes
-      carouselItem.className = `card card-${index + 1}`;
-      carouselItem.src = item.src;
-      carouselItem.setAttribute("loading", "lazy");
-      // Used to keep track of carousel items, infinite items possible in carousel however min 5 items required
-      carouselItem.setAttribute("data-index", `${index + 1}`);
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+
+    // Remover a classe 'selected' de todos os slides
+    slides.forEach(slide => {
+        slide.classList.remove("selected");
+        slide.style.order = "0";
     });
 
-    this.carouselOptions.forEach((option) => {
-      const btn = document.createElement('button');
-      const axSpan = document.createElement('span');
+    // Adicionar a classe 'selected' ao slide atual e definir a ordem dos slides
+    slides[slideIndex - 1].classList.add("selected");
+    slides[slideIndex - 1].style.order = "2";
 
-      // Add accessibilty spans to button
-      axSpan.innerText = option;
-      axSpan.className = 'ax-hidden';
-      btn.append(axSpan);
+    const prevIndex = (slideIndex - 2 + slides.length) % slides.length;
+    const nextIndex = slideIndex % slides.length;
 
-      // Add button attributes
-      btn.className = `carousel-control carousel-control-${option}+2`;
-      btn.setAttribute('data-name', option);
+    slides[prevIndex].style.order = "1"; // Imagem anterior
+    slides[nextIndex].style.order = "3"; // Próxima imagem
 
-      // Add carousel control options
-      controls.append(btn);
+    // Atualizar os dots
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[slideIndex - 1].classList.add("active");
+
+    // Atualizar a classe 'next-slide' para o próximo slide
+    updateNextSlide();
+}
+
+function updateNextSlide() {
+    const slides = document.querySelectorAll(".slide");
+    const nextIndex = (slideIndex % slides.length);
+    const nextSlide = slides[nextIndex];
+
+    // Remover a classe 'next-slide' de todos os slides
+    slides.forEach(slide => {
+        slide.classList.remove("next-slide");
     });
 
-    // After rendering carousel to our DOM, setup carousel controls' event listeners
-    this.setControls([...controls.children]);
-
-    // Set container property
-    this.carouselContainer = container;
-  }
-
-  setControls(controls) {
-    controls.forEach(control => {
-      control.onclick = (event) => {
-        event.preventDefault();
-
-        // Manage control actions, update our carousel data first then with a callback update our DOM
-        this.controlManager(control.dataset.name);
-      };
-    });
-  }
-
-  controlManager(control) {
-    if (control === 'previous') return this.previous();
-    if (control === 'next') return this.next();
-    if (control === 'play') return this.play();
-
-    return;
-  }
-
-  previous() {
-    // Update order of items in data array to be shown in carousel
-    this.carouselData.unshift(this.carouselData.pop());
-
-    // Push the first item to the end of the array so that the previous item is front and center
-    this.carouselInView.push(this.carouselInView.shift());
-
-    // Update the css class for each carousel item in view
-    this.carouselInView.forEach((item, index) => {
-      this.carouselContainer.children[index].className = `card-${item}`;
-    });
-
-    // Using the first 5 items in data array update content of carousel items in view
-    this.carouselData.slice(0, 5).forEach((data, index) => {
-      document.querySelector(`.card-${index + 1}`).innerText = data;
-    });
-  }
-
-  next() {
-    // Update order of items in data array to be shown in carousel
-    this.carouselData.push(this.carouselData.shift());
-
-    // Take the last item and add it to the beginning of the array so that the next item is front and center
-    this.carouselInView.unshift(this.carouselInView.pop());
-
-    // Update the css class for each carousel item in view
-    this.carouselInView.forEach((item, index) => {
-      this.carouselContainer.children[index].className = `card card-${item}`;
-    });
-
-    // Using the first 5 items in data array update content of carousel items in view
-    this.carouselData.slice(0, 5).forEach((data, index) => {
-      console.log( document.querySelector(`.card-${index + 1}`))
-      document.querySelector(`.card-${index + 1} p`).innerText = data;
-    });
-  }
-
-  play() {
-    const playBtn = document.querySelector('.carousel-control-play');
-    const startPlaying = () => this.next();
-
-    if (playBtn.classList.contains('playing')) {
-      // Remove class to return to play button state/appearance
-      playBtn.classList.remove('playing');
-
-      // Remove setInterval
-      clearInterval(this.carouselPlayState); 
-      this.carouselPlayState = null; 
-    } else {
-      // Add class to change to pause button state/appearance
-      playBtn.classList.add('playing');
-
-      // First run initial next method
-      this.next();
-
-      // Use play state prop to store interval ID and run next method on a 1.5 second interval
-      this.carouselPlayState = setInterval(startPlaying, 1500);
-    };
-  }
-
+    // Adicionar a classe 'next-slide' ao próximo slide
+    nextSlide.classList.add("next-slide");
 }
 
 
+function moveSlide(n) {
+    showSlide(slideIndex += n);
+}
 
-// Refers to the carousel root element you want to target, use specific class selectors if using multiple carousels
-const el = document.querySelector(".carrousel");
-// Create a new carousel object
-const exampleCarousel = new Carousel(el);
-// Setup carousel and methods
-exampleCarousel.mounted();
+function currentSlide(n) {
+    showSlide(slideIndex = n);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".slide");
+    const sliderDots = document.querySelector(".slider-dots");
+
+    // Cria os dots e adiciona os listeners
+    slides.forEach((slide, index) => {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        dot.addEventListener("click", () => {
+            currentSlide(index + 1);
+        });
+        sliderDots.appendChild(dot);
+
+        // Adiciona um event listener para mudar o slide quando um card for clicado
+        slide.addEventListener("click", () => {
+            currentSlide(index + 1);
+        });
+    });
+
+    showSlide(slideIndex);
+});

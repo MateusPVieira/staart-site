@@ -16,7 +16,7 @@
 
 <body>
 
-    <main>
+    <main class="d-flex flex-column">
         <header class="container-fluid">
             <nav class="navbar navbar-expand-lg w-100">
                 <a class="navbar-brand main-logo" href="#"><img src="./public/img/logoStaart.svg" alt=""></a>
@@ -56,7 +56,15 @@
             </div>
 
             <div class="clients">
-                <!-- carrousel clients logo -->
+                <div class="carrossel">
+                    <ul class="lista-imagens">
+                      <li><img src="imagem1.jpg" alt="Imagem 1"></li>
+                      <li><img src="imagem2.jpg" alt="Imagem 2"></li>
+                      <li><img src="imagem3.jpg" alt="Imagem 3"></li>
+                    </ul>
+                    <button class="botao-anterior">Anterior</button>
+                    <button class="botao-proximo">Próximo</button>
+                  </div>
             </div>
 
         </section>
@@ -289,12 +297,12 @@
 
         </section>
 
-        <section id="services">
+        <section id="services" class="align-self-center">
             <div class="title-box d-flex">
                 <img src="public/img/featureImage.svg" alt="">
-                <div class="text d-flex flex-column w-50">
-                    <span class="services-mini-text">Coloque um texto chamativo aqui</span>
-                    <span class="stripedText title">Coloque um texto chamativo aqui</span>
+                <div class="text d-flex flex-column">
+                    <p class="services-mini-text">Coloque um texto chamativo aqui</p>
+                    <p class="stripedText title">Coloque um texto chamativo aqui</p>
                     <p>Cras ex sapien, fringilla vel leo ut, porttitor egestas velit. Nunc
                         mauris elit, mollis quis lorem ac, viverra mattis mauris. Sed facilisis dictum nisl
                         sodales dignissim. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
@@ -416,9 +424,23 @@
                     mauris elit, mollis quis lorem ac, viverra mattis mauris.Nunc
                     mauris elit, mollis quis lorem ac, viverra mattis mauris.</p>
             </div>
-            <div class="carrousel d-flex">
-                <!-- <div class="filter"></div> -->
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">
+                        <div class="card"><p class="card-text">Primeiro</p></div>                    </div>
+                    <div class="slide ">
+                        <div class="card"><p class="card-text">Segundo</p></div>                    </div>
+                    <div class="slide">
+                       <div class="card"><p class="card-text">Terceiro</p></div>
+                    </div>
+                </div>
+                <div class="slider-dots"></div>
+                <div class="slider-dots"></div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
             </div>
+                       
+            
         </section>
 
         <section id="banner" class="d-flex flex-row">

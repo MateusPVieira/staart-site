@@ -132,6 +132,67 @@ header .navbar-nav button{
   font-size: 1rem;
 }
 
+/* Clients*/
+.carrossel {
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.lista-imagens {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.lista-imagens li {
+  width: 100%;
+  height: 100%;
+}
+
+.lista-imagens img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.botao-anterior,
+.botao-proximo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.botao-anterior {
+  left: 10px;
+}
+
+.botao-proximo {
+  right: 10px;
+}
+
+.carrossel:hover .lista-imagens {
+  transform: translateX(0);
+}
+
+.botao-anterior:hover,
+.botao-proximo:hover {
+  background-color: #ccc;
+}
+
 
 /* About */
 .about{
@@ -286,14 +347,21 @@ header .navbar-nav button{
 }
 
 #services .text{
-  margin: 17rem 15rem 0rem 5rem;
- 
+  margin: 17rem 10rem 0rem 2rem;
+ width: 35%;
 }
+
+#services .title-box{
+  margin: 5rem auto;
+  justify-content: center;
+}
+
 
 #services .services-mini-text{
   color: #71E5FF;
   font-size: 1rem;
 }
+
 
 #services .title{
   font-weight: 700;
@@ -307,14 +375,12 @@ header .navbar-nav button{
   width: 65%;
 }
 
-#services .title-box{
-  margin-bottom: 5rem;
-}
 
 /* Items */
 
 #services .items{
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #services .items .item{
@@ -358,12 +424,7 @@ header .navbar-nav button{
 
 /* Carrousel */
 
-#feedbacks .carrousel{
-  position: relative;
-  margin-bottom: 5rem;
-}
-
-#feedbacks .carrousel .card {
+#feedbacks .card{
   z-index: 2;
   border-radius: 0.5rem;
   background-color: var(--dark-blue);
@@ -373,13 +434,13 @@ header .navbar-nav button{
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-#feedbacks .carrousel .card-text{
+#feedbacks .card-text{
   color: var(--white);
   font-weight: bold;
   text-align: center;
 }
 
-#feedbacks .carrousel .filter {
+#feedbacks .filter {
   position: absolute; /* Posiciona a div de filtro de forma absoluta */
   top: -5%;
   left: -25%;
@@ -390,116 +451,103 @@ header .navbar-nav button{
   background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(11,4,24,0) 45%, rgba(26,3,56,0) 53%, rgba(0,0,0,1) 78%, rgba(0,0,0,1) 100%);
 }
 
-.carousel-container {
-  align-items: center;
-  display: flex;
-  min-height: var(--carousel-height);
+.slider-container {
+  position: relative;
+  width: 80%;
   margin: 0 auto;
-  max-width: var(--carousel-width);
-  position: relative;
+  overflow: hidden;
 }
 
-#feedbacks .carrousel .card-1{
-  opacity: 0.4;
-}
-
-#feedbacks .carrousel .card-3{
-  opacity: 0.4;
-}
-
-#feedbacks .carrousel .card-4{
-  display: none;
-}
-
-#feedbacks .carrousel .card-5{
-  display: none;
-}
-.ax-hidden {
-  visibility: hidden;
-  position: absolute;
-}
-
-.carousel-controls {
-  margin-top: 12%;
-  position: relative;
-  z-index: 10;
+.slider {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centraliza os slides */
+  transition: transform 0.5s ease; /* Adiciona uma transição suave */
+  overflow: hidden; /* Para esconder partes dos slides que ultrapassam o contêiner */
+  align-items:center;
 }
 
-.carousel-control {  
-  z-index: 10;
-  background-color: transparent;
-  border: 2px solid;
-  border-radius: 4px;
-  color: #aaa;
-  cursor: pointer;
-  height: 22px;
-  margin: 0 20px;
+
+.slide {
+  flex: 0 0 33.33%; /* Cada slide ocupa 1/3 do container */
+  margin: 0 5px; /* Espaçamento entre os slides */
   position: relative;
-  transform: scale(1.5);
-  transition: transform 0.5s ease-out;
-  width: 22px;
+  transform: scale(0.8); /* Todas as imagens começam menores */
+  /*transition: opacity 0.5s ease, transform 0.5s ease; /* Transição suave */
+  -webkit-mask-image: linear-gradient(to right, transparent 25%, black 200%);
 }
 
-.carousel-control:hover {
-  transform: scale(1.3);
+.slide.selected {
+  opacity: 1; /* Imagem selecionada tem opacidade completa */
+  -webkit-mask-image: none;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;/* Imagem selecionada volta ao tamanho original */
 }
 
-/* previous button */
-.carousel-controls button:first-child{
-  left: 80%;
-}
-.carousel-controls button:last-child{
-  left: 1200%;
+
+.slider-dots {
+  text-align: center;
+  margin-top: 10px;
 }
 
-.carousel-control-previous::after,
-.carousel-control-previous::before {
-  box-sizing: border-box; 
-  content: '';
-  display: block;
-  height: 8px;
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #717171;
+}
+
+.header-feedbacks{
+display: flex;
+flex-direction: column;
+align-items:center;
+}
+
+.header-feedbacks > p {
+max-width: 500px;
+text-align: center;
+font-size: 1.25rem;
+}
+
+.slide.next-slide {
+  -webkit-mask-image: linear-gradient(to left, transparent 25%, black 200%);
+}
+
+.slide:not(.selected) {
+  cursor: pointer;
+}
+
+#feedbacks .prev, .next {
   position: absolute;
-  top: 5px
-}
-.carousel-control-previous::before {
-  background: currentColor;
-  border-radius: 2px;
-  right: 11px;
-  width: 2px;
-}
-.carousel-control-previous::after {
-  border-bottom: 4px solid transparent;
-  border-right: 5px solid;
-  border-top: 4px solid transparent;
-  right: 5px;
-  width: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
 }
 
-/* next button */
-.carousel-control-next::after,
-.carousel-control-next::before {
-  box-sizing: border-box;
-  content: "";
-  display: block;
-  height: 8px;
-  position: absolute;
-  top: 5px
+#feedbacks .prev {
+  left: 0;
 }
-.carousel-control-next::before {
-  background: currentColor;
-  border-radius: 2px;
-  left: 11px;
-  width: 2px;
+
+#feedbacks .next {
+  right: 0;
 }
-.carousel-control-next::after {
-  border-bottom: 4px solid transparent;
-  border-left: 5px solid;
-  border-top: 4px solid transparent;
-  left: 5px;
-  width: 0;
+
+#feedbacks .slider-dots {
+  text-align: center;
+  margin-top: 10px;
 }
+
 
 /* ########### Banner ######### */
 #banner{
