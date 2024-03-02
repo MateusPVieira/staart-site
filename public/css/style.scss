@@ -19,6 +19,7 @@ body{
 main{
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
+    width: 80%;
 }
 
 main p{
@@ -93,6 +94,7 @@ header .navbar-nav button{
   body .home .subtext{
     color: var(--blue);
     margin-right: 0;
+    margin-bottom: 2rem;
   }
 
   body{
@@ -103,13 +105,15 @@ header .navbar-nav button{
     }
   }
 
+  
   body .register{
     justify-content: center;
   }
 
-  body .register input{
+  body .home .register input{
     height: 3rem;
-    margin: 1rem 0 0.5rem 0;
+    font-size: 0.8rem;
+    margin: 0 0 0.5rem 0;
   } 
   
   body .home .total-registers{
@@ -214,13 +218,31 @@ header .navbar-nav button{
 
 /*  ########### Clients ###########*/
 @media screen and (max-width: 1080px) {
-  body #clients{
-    width: 25%;
+  body{
+    #clients{
+      margin: 0;
+    }
+
+    #clients .slider2{
+      width: auto;
+    }
+  }
+  #clients > div > div > div{
+    margin: 0.5rem;
+  }
+
+  @mixin white-gradient {
+    background: linear-gradient(to right,  var(--black) 80%,rgba(255,255,255,0) 100%);
   }
 }
 
 #clients{
+  width: 80%;
   margin: 3rem auto 3rem auto;
+}
+
+#clients > div > div > div{
+  margin: 1rem;
 }
 
 #clients img{
@@ -293,7 +315,20 @@ $animationSpeed: 40s;
 	}
 }
 
-/* About */
+/* #######  About ###### */
+
+@media screen and (max-width: 1080px) {
+  body{
+    .about{
+      padding: 1rem
+    }
+    .about > div.about-title.d-flex.flex-row.mb-5{
+      
+    }
+  }
+
+}
+
 .about{
     background: linear-gradient(-45deg, var(--medium-blue) 0%, var(--dark-blue) 20%, var(--dark-blue) 90%, var(--medium-blue) 100%);
     color: var(--white);
@@ -306,6 +341,7 @@ $animationSpeed: 40s;
 }
 
 .about .about-title > p {
+  margin-top: 1.5rem;
   width: 60%;
   color: var(--blue);
 }
