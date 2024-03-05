@@ -509,8 +509,29 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ############# Services ############### */
+@media screen and (max-width: 1080px) {
+  body #services {
+    margin-top: 2rem;
+  }
+  body #services .text {
+    margin: 2rem 0 0 0;
+    width: 100%;
+  }
+  body #services .title {
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-bottom: 1rem;
+  }
+  body #services .text p:last-child {
+    width: 100%;
+  }
+  body #services .items .item {
+    width: 21rem;
+    margin: 0 0 2rem 0;
+  }
+}
 #services {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 #services .text {
@@ -552,7 +573,7 @@ section.about.container-fluid > div.keywords {
 
 #services .items .item {
   width: 21rem;
-  margin: 3rem 6rem 3rem 0rem;
+  margin: 3rem 4rem 3rem 0rem;
 }
 
 #services .items .item-title {
