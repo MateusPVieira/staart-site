@@ -590,6 +590,14 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ############ Feedback ############ */
+@media screen and (max-width: 1080px) {
+  body #feedbacks {
+    margin-bottom: 3rem;
+  }
+  body #feedbacks .title-box {
+    width: 100%;
+  }
+}
 #feedbacks .title-box {
   width: 35%;
   align-self: center;
@@ -732,6 +740,28 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ########### Banner ######### */
+@media screen and (max-width: 1080px) {
+  body #banner {
+    padding: 1rem;
+    width: 20rem;
+    margin: 0 0 3rem 0;
+    flex-direction: column;
+  }
+  body #banner p:last-child {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 90%;
+  }
+  body #banner button {
+    margin: 1rem 0 0 0;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 2rem;
+    width: 70%;
+    height: 3rem;
+    align-self: center;
+  }
+}
 #banner {
   padding: 2rem 3rem;
   background: linear-gradient(90deg, rgb(202, 153, 255) 0%, rgb(225, 199, 252) 36%, rgb(255, 255, 255) 100%);
