@@ -842,6 +842,7 @@ font-size: 1.25rem;
     }
   }
 }
+
 #banner{
   padding: 2rem 3rem;
   background: linear-gradient(90deg, rgb(202, 153, 255) 0%, rgb(225, 199, 252)36%, rgba(255,255,255,1) 100%);
@@ -874,6 +875,24 @@ font-size: 1.25rem;
 
 
 /* ########### FAQ ############*/
+@media screen and (max-width: 1080px) {
+  body{
+    #faq p:last-child{
+      font-size: 3rem;
+      line-height: 3rem;
+      text-align: center;
+    }
+
+    #faq p:first-child{
+      font-weight: bold;
+      font-size: 2.5rem;
+      align-self: center;
+      justify-self: center;
+      margin-bottom: -0.9rem;
+    }
+
+  }
+}
 #faq .title{
   margin-bottom: 4rem;
 }

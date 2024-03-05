@@ -793,6 +793,20 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ########### FAQ ############*/
+@media screen and (max-width: 1080px) {
+  body #faq p:last-child {
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+  }
+  body #faq p:first-child {
+    font-weight: bold;
+    font-size: 2.5rem;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: -0.9rem;
+  }
+}
 #faq .title {
   margin-bottom: 4rem;
 }
