@@ -13,11 +13,21 @@
 /* General */
 body {
   background-color: #1c2031 !important;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 main {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 80%;
 }
 
@@ -52,8 +62,21 @@ main p {
 }
 
 /* Navbar */
+@media screen and (max-width: 1080px) {
+  body header .navbar {
+    flex-direction: column;
+  }
+}
 header .navbar {
   margin-bottom: 2.5rem;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+header > div > div > nav > ul {
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }
 
 header .navbar-nav li a {
@@ -71,7 +94,7 @@ header .navbar-nav button {
 /*Home*/
 @media screen and (max-width: 1080px) {
   body .home {
-    margin: 0rem !important;
+    margin: 0rem;
     display: flex;
     justify-content: center;
   }
@@ -81,6 +104,9 @@ header .navbar-nav button {
   }
   body .home .text {
     width: 100%;
+  }
+  body > main > section.home.container-fluid > div > div {
+    padding: 0;
   }
   body .home .keywords {
     font-size: 0.8rem;
@@ -97,6 +123,7 @@ header .navbar-nav button {
   }
   body .register {
     justify-content: center;
+    align-self: center;
   }
   body .home .register input {
     height: 3rem;
@@ -122,7 +149,7 @@ header .navbar-nav button {
 .home {
   color: var(--white);
   padding-bottom: 5rem;
-  margin: 0rem 3.3rem !important;
+  margin: 0rem 3.3rem;
 }
 
 .home .keywords {
@@ -166,7 +193,7 @@ header .navbar-nav button {
 .home .image {
   width: 40%;
   padding: 0rem 10rem 0rem 10rem;
-  margin: 0 16rem 0 -16rem;
+  margin: 0 14rem 0 -14rem;
 }
 
 .home .register {
@@ -206,7 +233,10 @@ header .navbar-nav button {
 /*  ########### Clients ###########*/
 @media screen and (max-width: 1080px) {
   body #clients {
+    align-items: center;
+    justify-content: center;
     margin: 0;
+    width: 100%;
   }
   body #clients .slider2 {
     width: auto;
@@ -217,6 +247,7 @@ header .navbar-nav button {
 }
 #clients {
   width: 80%;
+  display: flex;
   margin: 3rem auto 3rem auto;
 }
 
@@ -284,14 +315,14 @@ header .navbar-nav button {
 
 /* #######  About ###### */
 @media screen and (max-width: 1080px) {
-  body .about {
+  body main .about {
     padding: 1rem;
     margin: 0 0 3rem 0;
   }
   body section.about.container-fluid > div.about-title {
     display: flex;
     flex-direction: column;
-    margin: 0;
+    margin: 0 0 2rem 0;
   }
   body .about .about-title > div {
     width: 100%;
@@ -312,7 +343,7 @@ header .navbar-nav button {
     margin-bottom: 0;
   }
 }
-.about {
+main .about {
   background: linear-gradient(-45deg, var(--medium-blue) 0%, var(--dark-blue) 20%, var(--dark-blue) 90%, var(--medium-blue) 100%);
   color: var(--white);
   padding: 6rem 5rem 2rem 5rem;
@@ -364,8 +395,9 @@ section.about.container-fluid > div.keywords {
 
 /* ############ Cases ############ */
 @media screen and (max-width: 1080px) {
-  body .cases-text {
+  body #cases .cases-text {
     flex-direction: column;
+    margin: auto;
   }
   body #cases .cases-text .title {
     font-size: 1.5rem;
@@ -373,16 +405,18 @@ section.about.container-fluid > div.keywords {
     padding-left: 0;
     margin-bottom: 1rem;
   }
-  body #cases > div.cases-text.mb-5.row > div:nth-child(2) {
+  body #cases > div.cases-text.row > div:nth-child(2) {
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
-  body #cases > div.cases-text.mb-5.row > div:nth-child(2) > div {
+  body #cases > div.cases-text.row > div:nth-child(2) > div {
     flex-direction: column;
   }
-  body #cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > span {
+  body #cases > div.cases-text.row > div:nth-child(2) > div:nth-child > span {
     width: 100%;
   }
-  body #cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > p {
+  body #cases > div.cases-text.row > div:nth-child(2) > div:nth-child > p {
     margin-top: 2rem;
     width: 100%;
     padding-left: 0rem;
@@ -396,14 +430,24 @@ section.about.container-fluid > div.keywords {
   justify-content: center;
 }
 
+#cases .cases-text {
+  justify-content: center;
+}
+
 #cases .cases-text .title {
   font-size: 2rem;
   font-weight: bold;
   width: 50%;
 }
 
-#cases > div.cases-text.mb-5.row > div:nth-child(2) {
-  width: 50%;
+#cases > div.cases-text.row > div.title > p {
+  width: 85%;
+}
+
+#cases > div.cases-text.row > div:nth-child(2) {
+  width: 35%;
+  margin-left: 5%;
+  margin-bottom: 3rem;
 }
 
 #cases .cases-text span {
@@ -411,15 +455,12 @@ section.about.container-fluid > div.keywords {
   color: var(--white);
   font-weight: 600;
   font-size: 1rem;
+  width: auto;
+  justify-self: flex-start;
 }
 
-#cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > span {
-  width: 25%;
-}
-
-#cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > p {
+#cases > div.cases-text.row > div:nth-child(2) > div:nth-child > p {
   margin-top: 2rem;
-  width: 50%;
   padding-left: 3rem;
 }
 
@@ -794,6 +835,9 @@ section.about.container-fluid > div.keywords {
 
 /* ########### FAQ ############*/
 @media screen and (max-width: 1080px) {
+  body #faq .title {
+    margin-bottom: 2rem;
+  }
   body #faq p:last-child {
     font-size: 3rem;
     line-height: 3rem;
@@ -805,6 +849,15 @@ section.about.container-fluid > div.keywords {
     align-self: center;
     justify-self: center;
     margin-bottom: -0.9rem;
+  }
+  body #faq .FAQ-items .FAQ-item {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--white);
+    max-width: 20rem;
+    min-width: 20rem;
+    margin: 0.6rem 0rem;
+    height: 6rem;
   }
 }
 #faq .title {
@@ -834,9 +887,7 @@ section.about.container-fluid > div.keywords {
   font-weight: 500;
   font-size: 1.3rem;
   color: var(--white);
-  margin-left: 1rem;
   align-self: center;
-  max-width: 20rem;
   min-width: 25rem;
   margin: 0.6rem 0rem;
   border-radius: 1rem;
@@ -847,6 +898,48 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ######### Community ########*/
+@media screen and (max-width: 1080px) {
+  body #community .comm-ico {
+    margin-bottom: 0.5rem;
+  }
+  body #community > div > p.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    align-self: center;
+    line-height: 2.5rem;
+  }
+  body #community > div > p:nth-child(3) {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    font-weight: 200;
+    width: 100%;
+  }
+  body #community .comm-photo {
+    margin: 1.5rem 0;
+    width: 20rem;
+  }
+  body #community .buttons {
+    margin-bottom: 4rem;
+    flex-direction: column;
+  }
+  body #community button {
+    height: 4rem;
+    margin: 0.5rem;
+  }
+  body #community button a {
+    margin: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  body #community button a img {
+    margin-right: 0.5rem;
+  }
+}
 #community .comm-ico {
   width: 5rem;
   align-self: center;
@@ -924,10 +1017,47 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ######## Info ####### */
+@media screen and (max-width: 1080px) {
+  body #info > div {
+    justify-content: center;
+  }
+  body #info > div .address-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  body #info > div div:nth-child(2), body #info > div div:nth-child(3) {
+    width: 50%;
+    margin-bottom: 2rem;
+  }
+  body #info .map {
+    width: 100%;
+  }
+  body #info .map iframe {
+    width: 100%;
+    height: 20rem;
+  }
+}
 #info {
   color: var(--white);
   font-size: 1rem;
   margin-bottom: 4rem;
+}
+
+#info > div {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#info > div > div {
+  width: auto;
+}
+
+#info > div .address-container {
+  width: 25%;
 }
 
 #info > div > div:nth-child(1) > p.adress {
@@ -955,10 +1085,24 @@ section.about.container-fluid > div.keywords {
   color: var(--purple);
 }
 
+#info .map {
+  width: 25%;
+}
+
 /* ####### Footer ####### */
+@media screen and (max-width: 1080px) {
+  body footer {
+    font-size: 0.8rem;
+  }
+}
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--white);
+  margin-bottom: 1.5rem;
+  background-color: #031b34;
+  padding: 1.5rem 0;
+  margin-bottom: -2rem;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
