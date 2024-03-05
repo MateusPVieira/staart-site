@@ -363,6 +363,33 @@ section.about.container-fluid > div.keywords {
 }
 
 /* ############ Cases ############ */
+@media screen and (max-width: 1080px) {
+  body .cases-text {
+    flex-direction: column;
+  }
+  body #cases .cases-text .title {
+    font-size: 1.5rem;
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 1rem;
+  }
+  body #cases > div.cases-text.mb-5.row > div:nth-child(2) {
+    width: 100%;
+  }
+  body #cases > div.cases-text.mb-5.row > div:nth-child(2) > div {
+    flex-direction: column;
+  }
+  body #cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > span {
+    width: 100%;
+  }
+  body #cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > p {
+    margin-top: 2rem;
+    width: 100%;
+    padding-left: 0rem;
+    padding-bottom: 1rem;
+    padding: 2rem 0rem 2rem 0rem;
+  }
+}
 #cases {
   display: flex;
   flex-direction: column;
@@ -372,7 +399,11 @@ section.about.container-fluid > div.keywords {
 #cases .cases-text .title {
   font-size: 2rem;
   font-weight: bold;
-  padding-left: calc(var(--bs-gutter-x) * 5);
+  width: 50%;
+}
+
+#cases > div.cases-text.mb-5.row > div:nth-child(2) {
+  width: 50%;
 }
 
 #cases .cases-text span {
@@ -380,6 +411,16 @@ section.about.container-fluid > div.keywords {
   color: var(--white);
   font-weight: 600;
   font-size: 1rem;
+}
+
+#cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > span {
+  width: 25%;
+}
+
+#cases > div.cases-text.mb-5.row > div:nth-child(2) > div:nth-child > p {
+  margin-top: 2rem;
+  width: 50%;
+  padding-left: 3rem;
 }
 
 #cases .cases-text .subtext {
