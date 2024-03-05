@@ -479,6 +479,11 @@ section.about.container-fluid > div.keywords {
     padding-bottom: 1rem;
     padding: 2rem 0rem 2rem 0rem;
   }
+
+  #cases .cards{
+    justify-content: center;
+  }
+
   }
 }
 #cases{
@@ -530,6 +535,10 @@ section.about.container-fluid > div.keywords {
 }
 
 /* Cards */
+
+#cases .cards{
+  justify-content: space-between;
+}
 
 #cases .card {
     position: relative;
@@ -686,12 +695,12 @@ section.about.container-fluid > div.keywords {
 
 #services .items{
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 #services .items .item{
   width: 21rem;
-  margin: 3rem 4rem 3rem 0rem;
+  margin: 3rem 0;
 }
 
 #services .items .item-title{
@@ -1208,8 +1217,9 @@ margin-bottom: 4rem;
   color: var(--purple);
 }
 
-#info .map{
-  width: 25%;
+#info .map iframe{
+  width: 20rem;
+  height: 15rem;
 }
 
 /* ####### Footer ####### */
