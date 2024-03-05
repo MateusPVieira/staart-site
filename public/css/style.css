@@ -286,13 +286,42 @@ header .navbar-nav button {
 @media screen and (max-width: 1080px) {
   body .about {
     padding: 1rem;
+    margin: 0 0 3rem 0;
+  }
+  body section.about.container-fluid > div.about-title {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  body .about .about-title > div {
+    width: 100%;
+  }
+  body .about .about-title > p {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+  body section.about.container-fluid > div.keywords {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0rem;
+  }
+  body .about .keyword {
+    margin: 0 0 2rem 0;
+  }
+  body .about .keyword-row {
+    margin-bottom: 0;
   }
 }
 .about {
   background: linear-gradient(-45deg, var(--medium-blue) 0%, var(--dark-blue) 20%, var(--dark-blue) 90%, var(--medium-blue) 100%);
   color: var(--white);
   padding: 6rem 5rem 2rem 5rem;
-  margin-bottom: 6rem;
+  margin: 0rem 3.3rem 5rem 3.3rem;
+}
+
+section.about.container-fluid > div.about-title {
+  display: flex;
+  margin: 2rem 4rem 5rem 2rem;
 }
 
 .about .about-title > div {
@@ -310,6 +339,11 @@ header .navbar-nav button {
   font-weight: bold;
 }
 
+section.about.container-fluid > div.keywords {
+  display: flex;
+  justify-content: space-between;
+}
+
 .about .keywords img {
   width: 2rem;
   margin-bottom: 0.5rem;
@@ -321,7 +355,11 @@ header .navbar-nav button {
 }
 
 .about .keyword {
-  margin-bottom: 5rem;
+  margin: 0rem 2rem 5rem 2rem;
+}
+
+.about .keyword-row {
+  margin-bottom: 3rem;
 }
 
 /* ############ Cases ############ */
