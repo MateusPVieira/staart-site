@@ -588,7 +588,7 @@ section.about.container-fluid > div.keywords {
 }
 
 #services .title-box {
-  justify-content: center;
+  justify-content: space-around;
   margin-bottom: 2rem;
 }
 
@@ -866,6 +866,11 @@ section.about.container-fluid > div.keywords {
     margin: 0.6rem 0rem;
     height: 6rem;
   }
+  body #faq > div.FAQ-items.d-flex.flex-column > div > .card-body {
+    max-width: 20rem;
+    min-width: 20rem;
+    font-size: 0.8rem;
+  }
 }
 #faq .title {
   margin-bottom: 4rem;
@@ -891,17 +896,45 @@ section.about.container-fluid > div.keywords {
 }
 
 #faq .FAQ-items .FAQ-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   font-weight: 500;
   font-size: 1.3rem;
   color: var(--white);
   align-self: center;
   min-width: 25rem;
+  max-width: 25rem;
   margin: 0.6rem 0rem;
   border-radius: 1rem;
-  height: 6rem;
+  min-height: 6rem;
+  height: -moz-fit-content;
+  height: fit-content;
   background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(45deg, rgb(210, 168, 255) 0%, rgb(236, 218, 255) 100%);
   border: 0.13rem solid transparent;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+#faq > div.FAQ-items.d-flex.flex-column > div > .card-body {
+  padding: 1rem;
+  color: var(--white);
+  min-width: 25rem;
+  max-width: 25rem;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 1rem;
+  min-height: 6rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(45deg, rgb(210, 168, 255) 0%, rgb(236, 218, 255) 100%);
+  border: 0.13rem solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+#faq > div.FAQ-items.d-flex.flex-column > button > img {
+  margin-left: 0.8rem;
 }
 
 /* ######### Community ########*/
