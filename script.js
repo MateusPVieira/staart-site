@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   elements.forEach((element) => originalTexts.push(element.innerHTML));
   handleResize(); // Chama handleResize uma vez após a inicialização para truncação inicial
+
+  
 });
 
 

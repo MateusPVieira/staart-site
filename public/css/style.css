@@ -74,7 +74,7 @@ header .navbar {
   justify-content: space-between;
 }
 
-header > div > div > nav > ul {
+#navbarNavAltMarkup > ul {
   width: 100%;
   align-items: center;
   justify-content: space-around;
@@ -90,6 +90,16 @@ header .navbar-nav li a {
 header .navbar-nav button {
   font-size: 1.2rem;
   padding: 0.7rem 1.5rem;
+}
+
+body > main > header > div > nav > div.logo > button > img {
+  width: 2rem;
+}
+
+body > main > header > div > nav > div.logo > button {
+  background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(45deg, rgb(210, 168, 255) 0%, rgb(236, 218, 255) 100%);
+  border: 0.13rem solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 /*Home*/
