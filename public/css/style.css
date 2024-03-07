@@ -262,6 +262,7 @@ body > main > header > div > nav > div.logo > button {
   width: 80%;
   display: flex;
   margin: 3rem auto 3rem auto;
+  justify-content: center;
 }
 
 #clients > div > div > div {
@@ -418,6 +419,10 @@ section.about.container-fluid > div.keywords {
     padding-left: 0;
     margin-bottom: 1rem;
   }
+  body #cases > div.cards.row > div > div {
+    min-width: 0rem;
+    width: 19.5rem;
+  }
   body #cases > div.cases-text.row > div:nth-child(2) {
     width: 100%;
     margin: 0;
@@ -466,6 +471,11 @@ section.about.container-fluid > div.keywords {
   margin-bottom: 3rem;
 }
 
+#cases > div.cards.row > div {
+  display: flex;
+  justify-content: center;
+}
+
 #cases .cases-text span {
   display: block;
   color: var(--white);
@@ -488,7 +498,7 @@ section.about.container-fluid > div.keywords {
 
 /* Cards */
 #cases .cards {
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 #cases .card {
@@ -496,14 +506,14 @@ section.about.container-fluid > div.keywords {
   height: 30rem;
   min-width: 20rem;
   min-height: 30rem;
-  margin: 2rem 1rem;
+  margin: 2rem 2%;
   border-radius: 1rem;
   background-color: var(--transparent);
   background-repeat: no-repeat;
   background-size: contain;
   box-shadow: 0 30px 40px rgba(0, 0, 0, 0.1);
   padding: 0;
-  width: auto;
+  width: 25rem;
 }
 
 #cases .card .card-b {
@@ -549,6 +559,7 @@ section.about.container-fluid > div.keywords {
   background: linear-gradient(#1c2031, #1c2031) padding-box, linear-gradient(10deg, #1c2031, var(--transparent)) border-box;
   border: 3px solid transparent;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  align-self: center;
 }
 
 #cases .card-button a {
@@ -589,6 +600,7 @@ section.about.container-fluid > div.keywords {
   body #services .items .item {
     width: 21rem;
     margin: 0 0 2rem 0;
+    padding: 0 1rem;
   }
 }
 #services {
@@ -633,8 +645,8 @@ section.about.container-fluid > div.keywords {
 }
 
 #services .items .item {
-  width: 21rem;
   margin: 3rem 0;
+  padding: 0 3rem;
 }
 
 #services .items .item-title {
